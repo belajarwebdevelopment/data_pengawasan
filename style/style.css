@@ -1,0 +1,179 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+.top-nav {
+  background: #34495e;
+  padding: 20px;
+  text-align: center;
+}
+
+.top-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.top-nav .logo {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 28px;
+  font-weight: bold;
+  color: #FFF;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.sub-header {
+  text-align: center;
+  font-size: 12px;
+  background-color: #f8f5f2;
+  padding: 5px 0;
+  letter-spacing: 1px;
+  color: #888;
+}
+
+.hero {
+  background: #ffffff;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/*
+.hero-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+*/
+
+.logo-img {
+  /*border: 1px solid black;*/
+  width : 10%;
+  height : 90px;
+  margin : 0 auto;
+  background-image: url('../metrologi-logo.png'); /* ganti dengan path gambar kamu */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.almt {
+  margin-top: -20px;
+  padding-top: 0px;
+}
+
+.instansi {
+  margin-top: -20px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.hero h1 {
+  font-size: 32px;
+  color: darkgray;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.hero h1 span {
+  color: grey;
+}
+
+.hero p {
+  color: #dff;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.hero-buttons .btn {
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 3px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.btn.green {
+  background-color: #b3cc33;
+  color: #fff;
+}
+
+.btn.blue {
+  background-color: #34495e;
+  color: #fff;
+}
+
+.trusted {
+  background-color: #444;
+  color: #eee;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.trusted h4 {
+  font-size: 14px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.trusted .logos img {
+  margin: 0 10px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+#sub {
+  color: #000;
+}
+
+
+.minimalist-orange-select {
+    /* Basic Appearance */
+    -webkit-appearance: none; /* Remove default browser styling for Chrome/Safari */
+    -moz-appearance: none;    /* Remove default browser styling for Firefox */
+    appearance: none;         /* Remove default browser styling */
+    background-color: #000;   /* White background */
+    border: 1px solid #ddd;   /* Light gray border */
+    padding: 5px 20px 5px 7px; /* Padding, extra space for custom arrow */
+    font-size: 12px;
+    line-height: 1.5;
+    color: #b3cc33; /* Dark gray text */
+    border-radius: 5px; /* Slightly rounded corners */
+    cursor: pointer;
+    outline: none; /* Remove default focus outline */
+    width: 155px; /* Example width */
+    max-width: 100%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Very subtle shadow */
+
+    /* Orange Accent on Hover/Focus */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Smooth transitions */
+}
+
+.minimalist-orange-select:hover {
+    border-color: #b3cc33; /* Darker orange on hover */
+}
+
+.minimalist-orange-select:focus {
+    border-color: #b3cc33;/* Bright orange on focus */
+    box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.3); /* Orange glow on focus */
+}
+
+
+.minimalist-orange-select:focus + .custom-select-wrapper::after {
+    color: #ffa500; /* Orange arrow on focus */
+}
