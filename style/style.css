@@ -283,6 +283,7 @@ body {
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 10;
   position: absolute;
+  overflow: scroll;
 }
 
 
@@ -309,6 +310,7 @@ body {
     font-size: 0.9em;
     border-bottom: 1px solid #444; /* Garis di bawah deskripsi */
     margin: 0;
+    display: flex;
 }
 
 table {
@@ -428,5 +430,10 @@ tbody tr:last-child td {
     }
     .fas.fa-check {
         text-align: right !important;
+    }
+
+    #update {
+      font-size: 10px;
+
     }
 }

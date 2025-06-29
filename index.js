@@ -32,10 +32,71 @@ function closeTemplate() {
 function dataTemplateOpen(judul) {
 	document.getElementById("seeData").addEventListener("click", () => {
 		document.querySelector(".dataTemplate").style.display = "block";
-		document.getElementById("judul").innerHTML = judul;
+		document.getElementById("judul").innerHTML = `${judul} <div class="hero-buttons"><a href="#" class="btn green" id="update">UPDATE SELECTED DATA</a></div>`;
 		closeTemplate();
+		updateBtnHandler();
 	});
 }
+
+function cekAllHandler() {
+	document.getElementById("selectAll").addEventListener("change", function() {
+		let status;
+
+		this.checked ? status = true : status = false;
+
+		document.querySelectorAll(".itemCek").forEach((el) => {
+			el.checked = status;
+		});
+	});
+}
+
+
+function trClickHandler() {
+	document.querySelectorAll(".items").forEach(item => {
+		item.addEventListener("click", function() {
+			//console.log(this.id);
+			let checkbox = document.getElementById(`cek${this.id}`);
+			checkbox.checked = !checkbox.checked;
+
+			checkbox.checked ? checkbox.checked = true : checkbox.checked = false;
+		});
+	});
+}
+
+
+function updateBtnHandler() {
+	
+	document.getElementById("update").addEventListener("click", () => {
+		let checkedArr = [];
+
+		document.querySelectorAll(".itemCek").forEach(item => {
+			let parent = item.parentElement.parentElement
+			item.checked ? checkedArr.push([item.value, parent.children[3].textContent, parent.children[10].children[0].value]) : '';
+		});
+
+		console.log(checkedArr);
+	});
+
+}
+
+
+function pilihOpsi(val) {
+	const opsi = ["", "SAH", "BATAL"];
+	let str = `<select>`;
+
+	for (let i in opsi) {
+		if (i === val) {
+			str += `<option value=${i} selected>${i}</option>`;
+		} else {
+			str += `<option value=${i}>${i}</option>`;
+		}
+	}
+
+	str += `</select>`;
+
+	return str;
+}
+
 
 async function getDataWtu_or_koordinat(menu) {
 	//let api = "https://script.google.com/macros/s/AKfycbxMcX8HycMduVzPOTb3kRJxJ-dOxKslvqHfKtkWd7BgHr2FWVFSM_nHmzI57ks5Fuk0/exec";
@@ -58,10 +119,10 @@ async function getDataWtu_or_koordinat(menu) {
 
 		dataTemplateOpen(`Data ${menu} Kelurahan ${kelurahan}`);
 
-		data.datas.forEach(item => {
+		data.datas.forEach((item,id) => {
 			strTable += `
-				<tr>
-					<td>${item[0]}</td>
+				<tr class="items" id="${id}">
+					<td>${item[0]} <input type="checkbox" class="itemCek" id="cek${id}" name="cek${id}" value="${item[0]}"></td>
 					<td>${item[1]}</td>
 					<td>${item[2]}</td>
 					<td>${item[3]}</td>
@@ -71,13 +132,15 @@ async function getDataWtu_or_koordinat(menu) {
 					<td>${item[7]}</td>
 					<td>${item[8]}</td>
 					<td>${item[9]}</td>
-					<td>${item[10] === "CC" ? '' : item[10]}</td>
+					<td>${item[10] === "CC" ? '<select><option value="" selected></option><option value="SAH">SAH</option><option value="BATAL">BATAL</option></select>' : pilihOpsi(val)}</td>
 					<td>${item[11]}</td>
 					<td>${item[12]}</td>
 				</tr>
 			`;
 		});
 		document.getElementById('tableBody').innerHTML = strTable;
+		cekAllHandler();
+		trClickHandler();
 	});
 	
 }
