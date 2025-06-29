@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Table Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style type="text/css">
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Mengatur ke atas sedikit untuk memberi ruang footer di bawah */
+    min-height: 100vh;
+    background-color: #333; /* Background gelap keseluruhan halaman */
+    color: #f0f0f0; /* Warna teks umum */
+}
+
+.table-container {
+    width: 90%;
+    max-width: 900px; /* Batasi lebar maksimal tabel */
+    margin: 50px auto; /* Margin atas bawah dan tengah horizontal */
+    background-color: #222; /* Background tabel yang lebih gelap */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden; /* Penting untuk border-radius pada tabel */
+}
+
+.table-description {
+    text-align: center;
+    font-style: italic;
+    color: #aaa;
+    padding: 20px;
+    font-size: 0.9em;
+    border-bottom: 1px solid #444; /* Garis di bawah deskripsi */
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Menghilangkan spasi antar sel */
+    color: #f0f0f0;
+    font-size: 0.95em;
+}
+
+thead th {
+    background-color: #333; /* Background header kolom */
+    padding: 15px 10px;
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ddd;
+    border-bottom: 1px solid #555;
+    border-right: 1px dotted #444; /* Border dotted di kanan */
+}
+
+thead th:last-child {
+    border-right: none; /* Hilangkan border kanan pada kolom terakhir */
+}
+
+tbody td {
+    padding: 12px 10px;
+    border-bottom: 1px dotted #444; /* Border dotted di bawah */
+    border-right: 1px dotted #444; /* Border dotted di kanan */
+    text-align: left;
+    vertical-align: middle; /* Pastikan konten rata tengah vertikal */
+    color: #ccc;
+}
+
+tbody td:first-child {
+    font-weight: bold; /* Kolom pertama (nama fitur) lebih tebal */
+    color: #f0f0f0;
+    background-color: #2a2a2a; /* Background agak berbeda untuk kolom pertama */
+}
+
+tbody td:last-child {
+    border-right: none; /* Hilangkan border kanan pada kolom terakhir */
+}
+
+tbody tr:last-child td {
+    border-bottom: none; /* Hilangkan border bawah pada baris terakhir */
+}
+
+/* Styling untuk ikon centang */
+.fas.fa-check {
+    color: #28a745; /* Warna hijau untuk ikon centang */
+    font-size: 1.1em;
+    display: block; /* Agar ikon bisa di-middle vertikal */
+    text-align: center; /* Meratakan ikon ke tengah sel */
+}
+
+.footer-text {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.8em;
+    padding: 15px;
+    border-top: 1px solid #444; /* Garis di atas footer */
+    margin: 0;
+}
+
+/* Responsiveness dasar */
+@media (max-width: 768px) {
+    .table-container {
+        width: 95%;
+        margin: 20px auto;
+    }
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        margin: 0 0 1rem 0;
+        border: 1px solid #444;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    tr:last-child {
+        margin-bottom: 0;
+    }
+    td {
+        border: none !important;
+        position: relative;
+        padding-left: 50% !important;
+        text-align: right !important;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+    }
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #ddd;
+    }
+    tbody td:first-child {
+        background-color: transparent;
+        color: #f0f0f0;
+        font-size: 1.1em;
+        text-align: center !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        border-bottom: 1px dotted #444 !important;
+    }
+    .fas.fa-check {
+        text-align: right !important;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <div class="table-container">
+        <p class="table-description">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>COLUMN 1</th>
+                    <th>HATCHLING PLAN</th>
+                    <th>BABY PLAN</th>
+                    <th>BUSINESS PLAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Websites</td>
+                    <td>Single</td>
+                    <td>Unlimited</td>
+                    <td>Unlimited</td>
+                </tr>
+                <tr>
+                    <td>FREE 1 year domain registration</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td>One-click WordPress Installs</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td>FREE website & domain transfers</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td>FREE Dedicated IP</td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td>Free Upgrade to Positive SSL</td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="footer-text">
+            Image from Freepik
+        </p>
+    </div>
+
+</body>
+</html>

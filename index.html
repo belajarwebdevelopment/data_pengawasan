@@ -7,35 +7,126 @@
   <link rel="stylesheet" href="style/style.css"/>
 </head>
 <body>
+  <div class="dataTemplate hidden">
+    <div style="text-align: right; width:100%;padding : 10px 10px 0 0;"><span style="color : #FFFFFF;" id="tutup">X CLOSE</span></div>
+    <!--<div id="judul" style="text-align:center; color : #FFF; font-size: 36px;"></div>-->
+
+    <div class="table-container">
+        <!--<p class="table-description">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        </p>-->
+        <div id="judul" class="table-description" style="text-align:center; color : #FFF; font-size: 36px;"></div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>KODE QR</th>
+                    <th>KELURAHAN</th>
+                    <th>WTU</th>
+                    <th>ALAMAT</th>
+                    <th>UTTP</th>
+                    <th>KAP</th>
+                    <th>d</th>
+                    <th>MEREK</th>
+                    <th>TIPE</th>
+                    <th>TH TERA</th>
+                    <th>SAH/BATAL</th>
+                    <th>SERIAL</th>
+                    <th>JENIS</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!--<tr>
+                    <td>Websites</td>
+                    <td>Single</td>
+                    <td>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla</td>
+                    <td>Unlimited</td>
+                </tr>
+                <tr>
+                    <td>FREE 1 year domain registration</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td>One-click WordPress Installs</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td>FREE website & domain transfers</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td>FREE Dedicated IP</td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td>Free Upgrade to Positive SSL</td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr-->
+            </tbody>
+        </table>
+        <p class="footer-text">
+            Image from Freepik
+        </p>
+    </div>
+  </div>
   <header>
     <nav class="top-nav">
       <ul>
-        <li><a href="#">SIMPKTN</a></li>
-        <li><a href="#">SIMPEL</a></li>
+        <li><a href="https://metrologi.kemendag.go.id/front/regulasi" target="_blank">REGULASI</a></li>
+        <li><a href="https://simpktn.kemendag.go.id/index.php/portal/PerizinanDitmet" target="_blank">SIMPEL-IJIN TIPE</a></li>
+        <li><a href="https://simpktn.kemendag.go.id/internal" target="_blank">SIMPKTN-IJIN TIPE</a></li>
+        <li><a href="https://metrologi.kemendag.go.id/pengawasan/#/login" target="_blank">SIMPEL-PELAPORAN</a></li>
         <li class="logo">WTU DATA</li>
-        <li><a href="#">GOOGLE DRIVE</a></li>
+        <li><a href="#" target="_blank">G-DRIVE PENGAWASAN</a></li>
+        <li><a href="https://accounts.google.com/v3/signin/challenge/pwd?TL=ALgCv6zQK9S-HkMvMrpNvKbe6kw_S8gaoLy29oLXEec2HmrSAU__cIpzM1Sl81AD&checkConnection=youtube%3A250&checkedDomains=youtube&cid=1&continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&dsh=S-1205883059%3A1751121339078933&emr=1&flowEntry=ServiceLogin&flowName=GlifWebSignIn&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&ifkv=AdBytiP5FvN4qGDyQBi_lHBGR3OqulqcNt0XOTRnm2ElPXUUU2vB6yPtrRe6fRhX870kWYZL13nx&osid=1&pstMsg=1&service=mail" target="_blank">G-DRIVE KANTOR</a></li>
+        <li><a href="https://accounts.google.com/v3/signin/challenge/pwd?TL=ALgCv6zSouB0v46rdSI-6H_9csSQh738YYQVw09FWeNNldjh9wfXjWAZVx3Bu2aG&cid=1&continue=https%3A%2F%2Fdrive.google.com%2Fdrive%2Fhome&dsh=S1443620169%3A1751120890180540&flowEntry=ServiceLogin&flowName=GlifWebSignIn&followup=https%3A%2F%2Fdrive.google.com%2Fdrive%2Fhome&ifkv=AdBytiMWwWSxKC_EEXAW8FAcOD-IUna9idw7R4Ihx1eaPYyGqb9Em4sjqUyrsLdIYSzV8-KbUAMX&osid=1&service=wise" target="_blank">G-DRIVE PENDATAAN</a></li>
       </ul>
     </nav>
     <div class="sub-header"></div>
   </header>
-  <section class="hero">
-    <div class="hero-content">
-      <!--<div class="hero-icon">⚗️</div>-->
-      <div class="logo-img"></div>
-      <h1>app for downloading<br><span>WTU's data and coordinates</span></h1>
-      <p id="sub">Only by choosing the kelurahan's name</p>
-      <div class="hero-buttons">
-        <a href="#" class="btn green">UNDUH DATA WTU</a>
-        <a href="#" class="btn blue">UNDUH DATA KOORDINAT</a>
+  <div class="wrapper">
+    <section class="hero">
+      <div class="hero-content">
+        <!--<div class="hero-icon">⚗️</div>-->
+        <div class="logo-img"></div>
+        <h1>app for downloading<br><span>WTU's data and coordinates</span></h1>
+        <p id="sub">Select the kelurahan's name above and then click the button below depend on what data you want to retrieve..</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn green" id="wtu">UNDUH DATA WTU</a>
+          <a href="#" class="btn blue" id="koordinat">UNDUH DATA KOORDINAT</a>
+        </div>
+        <div class="downloadBox hidden">
+          
+
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <section class="trusted">
-    <h4 class="instansi">UPTD Metrologi<br>Dinas Perdagangan Kota Surakarta</h4>
-    <h6 class="almt">Jl. Jenderal Sudirman, No.2 Telp. / Fax. (0271) 638 738<br>www.dinasperdagangan.surakarta.go.id E-mail : dinasperdagangan@surakarta.go.id<br>SURAKARTA<br>57111</h6>
-  </section>
 
+  <footer class="trusted">
+      <div class="ft" id="leftDiv">
+        <a href="https://daftarterasolo.github.io" target="_blank" class="footer_link">Aplikasi Pendaftaran BlueApp</a>
+        <a href="https://redapp.metrologi.ska" target="_blank" class="footer_link">Aplikasi Pendaftaran RedApp</a>
+        <a href="https://belajarwebdevelopment.github.io" target="_blank" class="footer_link">Aplikasi Pendataan UTTP Wilayah</a>
+        <a href="https://belajarwebdevelopment.github.io" target="_blank" class="footer_link">SKP BKN</a>
+      </div>
+      <div class="ft" id="almt">
+        <h4 class="instansi">UPTD Metrologi<br>Dinas Perdagangan Kota Surakarta</h4>
+        <h6 class="almt">Jl. Popda No.1, Nusukan, Banjarsari Telp. / Fax. (0271) 727 243<br>Instagram : metrologi.solo| E-mail : upt.metrologi.solo@gmail.com | WA : 0821 3678 6062<br>SURAKARTA<br>57111</h6>
+      </div>
+      <div class="ft" id="logo"><img id="metro" src="metrologi.png"><img id="pemkot" src="logo_surakarta.jpeg"></div>
+  </footer>
   <script type="module" src="index.js"></script>
 </body>
 </html>
