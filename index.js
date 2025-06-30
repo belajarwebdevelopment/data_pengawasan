@@ -50,7 +50,7 @@ function cekAllHandler() {
 	});
 }
 
-
+/*
 function trClickHandler() {
 	document.querySelectorAll(".items").forEach(item => {
 		item.addEventListener("click", function() {
@@ -62,7 +62,24 @@ function trClickHandler() {
 		});
 	});
 }
+*/
 
+function trClickHandler() {
+	document.querySelectorAll(".items").forEach(item => {
+		item.forEach(elem => {
+			elem.addEventListener("click", function() {
+				console.log(this.className);
+				/*
+				let checkbox = document.getElementById(`cek${this.id}`);
+				checkbox.checked = !checkbox.checked;
+
+				checkbox.checked ? checkbox.checked = true : checkbox.checked = false;
+				*/
+			});		
+
+		});
+	});
+}
 
 function updateBtnHandler() {
 	
@@ -121,20 +138,20 @@ async function getDataWtu_or_koordinat(menu) {
 
 		data.datas.forEach((item,id) => {
 			strTable += `
-				<tr class="items" id="${id}">
+				<tr>
 					<td>${item[0]} <input type="checkbox" class="itemCek" id="cek${id}" name="cek${id}" value="${item[0]}"></td>
-					<td>${item[1]}</td>
-					<td>${item[2]}</td>
-					<td>${item[3]}</td>
-					<td>${item[4]}</td>
-					<td>${item[5]}</td>
-					<td>${item[6]}</td>
-					<td>${item[7]}</td>
-					<td>${item[8]}</td>
-					<td>${item[9]}</td>
+					<td class="item ${id}">${item[1]}</td>
+					<td class="item ${id}">${item[2]}</td>
+					<td class="item ${id}">${item[3]}</td>
+					<td class="item ${id}">${item[4]}</td>
+					<td class="item ${id}">${item[5]}</td>
+					<td class="item ${id}">${item[6]}</td>
+					<td class="item ${id}">${item[7]}</td>
+					<td class="item ${id}">${item[8]}</td>
+					<td class="item ${id}">${item[9]}</td>
 					<td>${item[10] === "CC" ? '<select><option value="" selected></option><option value="SAH">SAH</option><option value="BATAL">BATAL</option></select>' : pilihOpsi(val)}</td>
-					<td>${item[11]}</td>
-					<td>${item[12]}</td>
+					<td class="item ${id}">${item[11]}</td>
+					<td class="item ${id}">${item[12]}</td>
 				</tr>
 			`;
 		});
