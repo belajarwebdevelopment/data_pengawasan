@@ -65,18 +65,14 @@ function trClickHandler() {
 */
 
 function trClickHandler() {
-	document.querySelectorAll(".items").forEach(item => {
-		item.forEach(elem => {
-			elem.addEventListener("click", function() {
-				console.log(this.className);
-				/*
-				let checkbox = document.getElementById(`cek${this.id}`);
-				checkbox.checked = !checkbox.checked;
+	document.querySelectorAll(".item").forEach(item => {
+		//console.log(item);
+		item.addEventListener("click", function() {
+			let idx = this.className.split(' ')[1];
+			let checkbox = document.getElementById(`cek${idx}`);
+			checkbox.checked = !checkbox.checked;
 
-				checkbox.checked ? checkbox.checked = true : checkbox.checked = false;
-				*/
-			});		
-
+			checkbox.checked ? checkbox.checked = true : checkbox.checked = false;			
 		});
 	});
 }
@@ -97,9 +93,9 @@ function updateBtnHandler() {
 }
 
 
-function pilihOpsi(val) {
+function pilihOpsi(id) {
 	const opsi = ["", "SAH", "BATAL"];
-	let str = `<select>`;
+	let str = `<select class="sahSelect ${id}">`;
 
 	for (let i in opsi) {
 		if (i === val) {
@@ -112,6 +108,20 @@ function pilihOpsi(val) {
 	str += `</select>`;
 
 	return str;
+}
+
+
+function selectChangeHandler() {
+	document.querySelectorAll(".sahSelect").forEach(item => {
+		console.log(item);
+		item.addEventListener("change", function() {
+			let idx = this.className.split(" ")[1];
+			console.log(idx);
+			let checkbox = document.getElementById(`cek${idx}`);
+
+			checkbox.checked ? '' : checkbox.checked = true
+		});
+	});
 }
 
 
@@ -149,7 +159,7 @@ async function getDataWtu_or_koordinat(menu) {
 					<td class="item ${id}">${item[7]}</td>
 					<td class="item ${id}">${item[8]}</td>
 					<td class="item ${id}">${item[9]}</td>
-					<td>${item[10] === "CC" ? '<select><option value="" selected></option><option value="SAH">SAH</option><option value="BATAL">BATAL</option></select>' : pilihOpsi(val)}</td>
+					<td>${item[10] === "CC" ? `<select class="sahSelect ${id}"><option value=""></option><option value="SAH">SAH</option><option value="BATAL">BATAL</option></select>` : pilihOpsi(id)}</td>
 					<td class="item ${id}">${item[11]}</td>
 					<td class="item ${id}">${item[12]}</td>
 				</tr>
@@ -158,6 +168,7 @@ async function getDataWtu_or_koordinat(menu) {
 		document.getElementById('tableBody').innerHTML = strTable;
 		cekAllHandler();
 		trClickHandler();
+		selectChangeHandler();
 	});
 	
 }
