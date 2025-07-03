@@ -79,25 +79,36 @@ function trClickHandler() {
 
 function updateBtnHandler() {
 	
-	document.getElementById("update").addEventListener("click", () => {
-		let checkedArr = [];
+	document.getElementById("update").addEventListener("click", async () => {
+		//let checkedArr = [];
+		let qrCode = [];
 
 		document.querySelectorAll(".itemCek").forEach(item => {
 			let parent = item.parentElement.parentElement
-			item.checked ? checkedArr.push([item.value, parent.children[3].textContent, parent.children[10].children[0].value]) : '';
+			//item.checked ? checkedArr.push([item.value, parent.children[3].textContent, parent.children[10].children[0].value]) : '';
+			item.checked ? qrCode.push([item.value, parent.children[3].textContent, parent.children[10].children[0].value]) : '';
 		});
 
-		console.log(checkedArr);
+		let apiUrl = "https://script.google.com/macros/s/AKfycbyu8b24TtuM_X2Npo5jyzMs3-BOnPZKbE_Csa5SXJ7k05tWqG03Yf5tJfnCJ5KDPh_J/exec";
+
+		await fetch(apiUrl, {
+			method : 'POST',
+			body : JSON.stringify({'qrCode' : qrCode})
+		})
+		.then(el => el.json())
+		.then(el => console.log(el.status)); 
+		
+		//console.log(qrCode);
 	});
 
 }
 
 
-function pilihOpsi(id) {
+function pilihOpsi(id, val) {
 	const opsi = ["", "SAH", "BATAL"];
 	let str = `<select class="sahSelect ${id}">`;
 
-	for (let i in opsi) {
+	for (let i of opsi) {
 		if (i === val) {
 			str += `<option value=${i} selected>${i}</option>`;
 		} else {
@@ -159,7 +170,7 @@ async function getDataWtu_or_koordinat(menu) {
 					<td class="item ${id}">${item[7]}</td>
 					<td class="item ${id}">${item[8]}</td>
 					<td class="item ${id}">${item[9]}</td>
-					<td>${item[10] === "CC" ? `<select class="sahSelect ${id}"><option value=""></option><option value="SAH">SAH</option><option value="BATAL">BATAL</option></select>` : pilihOpsi(id)}</td>
+					<td>${item[10] === "CC" ? `<select class="sahSelect ${id}"><option value=""></option><option value="SAH">SAH</option><option value="BATAL">BATAL</option></select>` : pilihOpsi(id, item[10])}</td>
 					<td class="item ${id}">${item[11]}</td>
 					<td class="item ${id}">${item[12]}</td>
 				</tr>
