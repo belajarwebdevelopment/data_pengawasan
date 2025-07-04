@@ -32,7 +32,7 @@ function closeTemplate() {
 function dataTemplateOpen(judul) {
 	document.getElementById("seeData").addEventListener("click", () => {
 		document.querySelector(".dataTemplate").style.display = "block";
-		document.getElementById("judul").innerHTML = `${judul} <div class="hero-buttons"><a href="#" class="btn green" id="update">UPDATE SELECTED DATA</a></div>`;
+		document.getElementById("judul").innerHTML = `${judul} <div class="hero-buttons"><a href="#" class="btn update-btn" id="update">UPDATE SELECTED DATA</a></div>`;
 		closeTemplate();
 		updateBtnHandler();
 	});
@@ -135,6 +135,19 @@ function selectChangeHandler() {
 	});
 }
 
+/*
+function barisTabelHandler() {
+	document.querySelectorAll(".barisTabel").forEach(item => {
+		
+		item.addEventListener("onmouseover", function () {
+			console.log(item);
+			this.children.forEach(elem => {
+				elem.style.backgroundColor = "brown";				
+			});
+		});
+	});
+}
+*/
 
 async function getDataWtu_or_koordinat(menu) {
 	//let api = "https://script.google.com/macros/s/AKfycbxMcX8HycMduVzPOTb3kRJxJ-dOxKslvqHfKtkWd7BgHr2FWVFSM_nHmzI57ks5Fuk0/exec";
@@ -155,11 +168,11 @@ async function getDataWtu_or_koordinat(menu) {
 			<a href=# class="linkdl" id="seeData">See The Datascsv</a>
 		`;
 
-		dataTemplateOpen(`Data ${menu} Kelurahan ${kelurahan}`);
+		dataTemplateOpen(`<span id="judul_tabel">Data ${menu} Kelurahan ${kelurahan}</span>`);
 
 		data.datas.forEach((item,id) => {
 			strTable += `
-				<tr>
+				<tr class="barisTabel">
 					<td>${item[0]} <input type="checkbox" class="itemCek" id="cek${id}" name="cek${id}" value="${item[0]}"></td>
 					<td class="item ${id}">${item[1]}</td>
 					<td class="item ${id}">${item[2]}</td>
@@ -180,6 +193,7 @@ async function getDataWtu_or_koordinat(menu) {
 		cekAllHandler();
 		trClickHandler();
 		selectChangeHandler();
+		//barisTabelHandler();
 	});
 	
 }
