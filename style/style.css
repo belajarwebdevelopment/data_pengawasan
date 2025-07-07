@@ -126,6 +126,11 @@ body {
   color: #fff;
 }
 
+.btn.orange {
+  background-color: darkorange;
+  color: #fff;
+}
+
 .btn.update-btn {
   background-color: #b3cc33;
   color: #fff;
@@ -510,4 +515,10 @@ tbody tr:last-child td {
 .barisTabel:hover {
   background-color: brown; /* Warna abu-abu yang lebih terang */
   cursor: pointer; /* Mengubah kursor menjadi pointer */
+}
+
+
+.btn.sending_status {
+  background-color: darkgray;
+  /*content: "Sending request .... please wait...";*/
 }

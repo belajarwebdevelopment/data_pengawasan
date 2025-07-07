@@ -83,13 +83,23 @@ function updateBtnHandler() {
 		//let checkedArr = [];
 		let qrCode = [];
 
+		let updateBtn = document.getElementById("update");
+		updateBtn.classList.add("sending_status");
+		updateBtn.textContent = "Sending request ... please wait."
+
+		
+		await new Promise((resolve) => {
+			setTimeout(() => resolve("done"),2000);
+		});
+		
 		document.querySelectorAll(".itemCek").forEach(item => {
 			let parent = item.parentElement.parentElement
 			//item.checked ? checkedArr.push([item.value, parent.children[3].textContent, parent.children[10].children[0].value]) : '';
 			item.checked ? qrCode.push([item.value, parent.children[3].textContent, parent.children[10].children[0].value]) : '';
 		});
 
-		let apiUrl = "https://script.google.com/macros/s/AKfycbyu8b24TtuM_X2Npo5jyzMs3-BOnPZKbE_Csa5SXJ7k05tWqG03Yf5tJfnCJ5KDPh_J/exec";
+		//let apiUrl = "https://script.google.com/macros/s/AKfycbyu8b24TtuM_X2Npo5jyzMs3-BOnPZKbE_Csa5SXJ7k05tWqG03Yf5tJfnCJ5KDPh_J/exec";
+		let apiUrl = "https://script.google.com/macros/s/AKfycbxRmSNhvaHL9qbuHpt6Qyln7qTEJxgQPnoAtY7t4Fl4AvWNQRw9MhaGQmjrjeQzJ0aBEA/exec";
 
 		await fetch(apiUrl, {
 			method : 'POST',
@@ -98,6 +108,9 @@ function updateBtnHandler() {
 		.then(el => el.json())
 		.then(el => console.log(el.status)); 
 		
+
+		updateBtn.classList.remove("sending_status");
+		updateBtn.textContent = "UPDATE SELECTED DATA";
 		//console.log(qrCode);
 	});
 
@@ -151,7 +164,9 @@ function barisTabelHandler() {
 
 async function getDataWtu_or_koordinat(menu) {
 	//let api = "https://script.google.com/macros/s/AKfycbxMcX8HycMduVzPOTb3kRJxJ-dOxKslvqHfKtkWd7BgHr2FWVFSM_nHmzI57ks5Fuk0/exec";
-	let api = "https://script.google.com/macros/s/AKfycbxXxh8VxpYZqDZvw1KCJBUKVQkDeDAvlcxEf2X9pSWMO0FFJBLBCrymTnu3V4LLBBT3/exec";
+	//let api = "https://script.google.com/macros/s/AKfycbxXxh8VxpYZqDZvw1KCJBUKVQkDeDAvlcxEf2X9pSWMO0FFJBLBCrymTnu3V4LLBBT3/exec";
+	//let api = "https://script.google.com/macros/s/AKfycbxwp0JNmJiw1rQtQD_DoNAuaryVOpAIciVlqHODddCEp9u6tvY6bLxq2OdzfLGTRw5T7A/exec";
+	let api = "https://script.google.com/macros/s/AKfycbwp14dZn2B77VLfCGwTR6jv_vA-FFqSyv3OYpxhvug3OwnLNWNhNYCAJ-Z-11Ikj2GW/exec";
 
 	let box = document.querySelector(".downloadBox");
 	box.style.display = "none";
