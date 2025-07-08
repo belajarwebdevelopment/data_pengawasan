@@ -16,8 +16,8 @@ function clickTombolHandler() {
 
 			await getDataWtu_or_koordinat(this.id);
 			
-			this.id === "wtu" ? this.textContent = `UNDUH DATA WTU` : this.textContent = `UNDUH DATA KOORDINAT`;
-			this.id === "wtu" ? this.style.backgroundColor = "#b3cc33" : this.style.backgroundColor = "#34495e";
+			this.id === "wtu" ? this.textContent = `UNDUH DATA WTU` : this.id === "koordinat" ? this.textContent = `UNDUH DATA KOORDINAT` : this.textContent = `UNDUH DATA WTU NON PENDATAAN`;
+			this.id === "wtu" ? this.style.backgroundColor = "#b3cc33" : this.id === "koordinat" ? this.style.backgroundColor = "#34495e" : this.style.backgroundColor = "darkorange";
 		});
 	});
 }
@@ -35,6 +35,15 @@ function dataTemplateOpen(judul) {
 		document.getElementById("judul").innerHTML = `${judul} <div class="hero-buttons"><a href="#" class="btn update-btn" id="update">UPDATE SELECTED DATA</a></div>`;
 		closeTemplate();
 		updateBtnHandler();
+	});
+}
+
+function dataTemplateOpenWtuNonData(judul) {
+	document.getElementById("seeData").addEventListener("click", () => {
+		document.querySelector(".dataTemplate").style.display = "block";
+		document.getElementById("judul").innerHTML = `${judul}`;
+		closeTemplate();
+		//updateBtnHandler();
 	});
 }
 
@@ -166,12 +175,48 @@ async function getDataWtu_or_koordinat(menu) {
 	//let api = "https://script.google.com/macros/s/AKfycbxMcX8HycMduVzPOTb3kRJxJ-dOxKslvqHfKtkWd7BgHr2FWVFSM_nHmzI57ks5Fuk0/exec";
 	//let api = "https://script.google.com/macros/s/AKfycbxXxh8VxpYZqDZvw1KCJBUKVQkDeDAvlcxEf2X9pSWMO0FFJBLBCrymTnu3V4LLBBT3/exec";
 	//let api = "https://script.google.com/macros/s/AKfycbxwp0JNmJiw1rQtQD_DoNAuaryVOpAIciVlqHODddCEp9u6tvY6bLxq2OdzfLGTRw5T7A/exec";
-	let api = "https://script.google.com/macros/s/AKfycbwp14dZn2B77VLfCGwTR6jv_vA-FFqSyv3OYpxhvug3OwnLNWNhNYCAJ-Z-11Ikj2GW/exec";
+	//let api = "https://script.google.com/macros/s/AKfycbwp14dZn2B77VLfCGwTR6jv_vA-FFqSyv3OYpxhvug3OwnLNWNhNYCAJ-Z-11Ikj2GW/exec";
+	let api = "https://script.google.com/macros/s/AKfycbxJLsgEJx_ZoZNL-b3Eb7LdlNaTStwufkZFxRPisjt6Pyznz86bKJjuvMIm3zoVLj1LAw/exec";
+
 
 	let box = document.querySelector(".downloadBox");
 	box.style.display = "none";
+	let strHead = ``;
 	let strTable = ``;
 	
+	menu === "wtu" ? strHead += `<tr>
+                    <th>KODE QR <input type="checkbox" id="selectAll" name="selectAll"></th>
+                    <th>KELURAHAN</th>
+                    <th>WTU</th>
+                    <th>ALAMAT</th>
+                    <th>UTTP</th>
+                    <th>KAP</th>
+                    <th>d</th>
+                    <th>MEREK</th>
+                    <th>TIPE</th>
+                    <th>TH TERA</th>
+                    <th>SAH/BATAL</th>
+                    <th>SERIAL</th>
+                    <th>JENIS</th>
+                </tr>`
+        	: strHead += `<tr>
+                    <th>NO</th>
+                    <th>KELURAHAN</th>
+                    <th>WTU</th>
+                    <th>ALAMAT</th>
+                    <th>UTTP</th>
+                    <th>KAP</th>
+                    <th>d</th>
+                    <th>MEREK</th>
+                    <th>TIPE</th>
+                    <th>TH TERA</th>
+                    <th>SAH/BATAL</th>
+                    <th>SERIAL</th>
+                    <th>JENIS</th>
+                </tr>`;
+
+    document.getElementById("tableHead").innerHTML = strHead;
+
 	await fetch(`${api}?kelurahan=${kelurahan}&menu=${menu}`,{
 		method : 'POST'
 	}).then(data => data.json()).then(data => {
@@ -180,15 +225,17 @@ async function getDataWtu_or_koordinat(menu) {
 		box.style.display = "block";
 		box.innerHTML = `
 			<a href="${data.downloadUrl}" class="linkdl" target="_blank">Click to download -> ${menu}_${kelurahan}.csv</a><br>
-			<a href=# class="linkdl" id="seeData">See The Datascsv</a>
+			${menu === "wtu" || menu === "wtu_non_data" ? `<a href=# class="linkdl" id="seeData">See The Datas</a>` : ``}
 		`;
 
-		dataTemplateOpen(`<span id="judul_tabel">Data ${menu} Kelurahan ${kelurahan}</span>`);
+		menu === "wtu" ? dataTemplateOpen(`<span id="judul_tabel">Data ${menu} Kelurahan ${kelurahan}</span>`) : dataTemplateOpenWtuNonData(`<span id="judul_tabel">Data ${menu} Kelurahan ${kelurahan}</span>`);
+
+		//menu === "wtu_non_data" ? document.getElementById("update").classList.add("hidden") : '';
 
 		data.datas.forEach((item,id) => {
 			strTable += `
 				<tr class="barisTabel">
-					<td>${item[0]} <input type="checkbox" class="itemCek" id="cek${id}" name="cek${id}" value="${item[0]}"></td>
+					${menu === "wtu" ? `<td>${item[0]} <input type="checkbox" class="itemCek" id="cek${id}" name="cek${id}" value="${item[0]}"></td>` : `<td>${id+1}</td>`}
 					<td class="item ${id}">${item[1]}</td>
 					<td class="item ${id}">${item[2]}</td>
 					<td class="item ${id}">${item[3]}</td>
@@ -205,7 +252,7 @@ async function getDataWtu_or_koordinat(menu) {
 			`;
 		});
 		document.getElementById('tableBody').innerHTML = strTable;
-		cekAllHandler();
+		menu === "wtu" ? cekAllHandler() : '';
 		trClickHandler();
 		selectChangeHandler();
 		//barisTabelHandler();
